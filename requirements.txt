@@ -1,2 +1,0 @@
-rohdeschwarz==1.4.dev1
-scikit-rf==0.14.9

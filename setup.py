@@ -81,7 +81,7 @@ setup(
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'dev':  ['ddt>=1.2.1<2.0'],
+        'dev':  ['ddt>=1.2.1<2.0', 'pyinstaller'],
         'test': ['ddt>=1.2.1<2.0']
     },
 
