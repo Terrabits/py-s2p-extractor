@@ -17,8 +17,10 @@ def main():
                         help='port (TCP only)')
     parser.add_argument('--timeout', default=5000, type=int,
                         help='default instrument timeout (ms)')
-    parser.add_argument('--log', default='',
+    parser.add_argument('--log',
                         help='SCPI command log filename')
+    parser.add_argument('--export-cal-data', action='store_true',
+                        help='Save corrections to numpy `savez` (*.pyz) data file')
     parser.add_argument('--outer-channel', type=int,
                         help='channel with outer corrections')
     parser.add_argument('--outer-cal-group',
@@ -71,7 +73,7 @@ def main():
         for port in args.ports:
             filename = args.filename.format(port=port)
             print(f'  {filename}')
-            calculate(vna, outer_source, inner_source, port, filename)
+            calculate(vna, outer_source, inner_source, port, filename, args.export_cal_data)
     except Exception as err:
         parser.print_help()
         raise

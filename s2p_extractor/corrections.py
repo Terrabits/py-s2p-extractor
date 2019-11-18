@@ -71,7 +71,7 @@ class Corrections(object):
 
     @staticmethod
     def from_cal_group(vna_obj, cal_group, port):
-        assert cal_group in vna_obj.cal_groups
+        assert cal_group.lower() in vna_obj.cal_groups
         with TempChannel(vna_obj) as temp_channel:
             ch = vna_obj.channel(temp_channel.index)
             ch.cal_group = cal_group
