@@ -45,3 +45,7 @@ pyenv virtualenv "$VERSION" "$VERSION@$ENV_NAME"
 
 # upgrade pip
 pip install --upgrade pip
+
+
+# remove development install artifact
+rm -rf *.egg-info
