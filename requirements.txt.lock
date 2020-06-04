@@ -1,0 +1,15 @@
+#pip             == 20.1.1
+altgraph         == 0.17
+future           == 0.18.2
+macholib         == 1.14
+numpy            == 1.18.5
+pathlib          == 1.0.1
+pyinstaller      == 3.6
+pyvisa           == 1.10.1
+rohdeschwarz     == 1.4.2.dev1
+ruamel.yaml      == 0.16.10
+ruamel.yaml.clib == 0.2.0
+scikit-rf        == 0.15.1
+scipy            == 1.4.1
+setuptools       == 45.2.0
+six              == 1.15.0
