@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+
+echo ""
+echo "WARNING: INSTALLING PACKAGES FROM REQUIREMENTS.TXT.LOCK"
+echo ""
+
+
+SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="$SCRIPTS_DIR/.."
+
+
+# exit on error
+# echo on
+set -e
+set -x
+
+
+cd "$ROOT_DIR"
+
+
+# upgrade pip first (recommended)
+pip install --upgrade pip
+
+
+# use package versions from requirements.txt.lock
+pip install -r requirements.txt.lock
+
+
+# install [dev]
+pip install -e .[dev]

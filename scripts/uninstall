@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+
+SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="$SCRIPTS_DIR/.."
+
+
+# exit on error
+# echo on
+set -e
+set -x
+
+
+cd "$ROOT_DIR"
+
+
+# check for .python-version file
+if ! [ -f .python-version ] ; then
+  echo 'error: .python-version does not exist'
+  exit 1
+fi
+
+
+# parse .python-version
+IFS='@'
+PYENV_STRING="$(cat .python-version)"
+read -ra PYENV_ARRAY <<< "$PYENV_STRING"
+VERSION="${PYENV_ARRAY[0]}"
+ENV_NAME="${PYENV_ARRAY[1]}"
+if [ -z "$VERSION" ] || [ -z "$ENV_NAME" ]; then
+  echo 'error parsing .python-version: contents not in "version@env_name" format'
+  exit 2
+fi
+
+
+# uninstall virtual environment
+if ! yes | pyenv uninstall "$PYENV_STRING" ; then
+  echo "warning: could not uninstall pyenv $PYENV_STRING: environment not found!"
+fi
+
+
+# create virtual environment
+pyenv virtualenv "$VERSION" "$VERSION@$ENV_NAME"
+
+
+# upgrade pip
+pip install --upgrade pip

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+
+SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="$SCRIPTS_DIR/.."
+
+
+# exit on error
+# echo on
+set -e
+set -x
+
+
+cd "$ROOT_DIR"
+
+
+# clean build
+rm -rf build
+mkdir build
+git checkout build/.gitignore || true  # let fail
+
+# clean dist
+rm -rf dist
+mkdir dist
+git checkout dist/.gitignore || true  # let fail

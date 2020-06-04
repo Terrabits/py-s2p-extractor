@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+
+SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="$SCRIPTS_DIR/.."
+
+
+# exit on error
+# echo on
+set -e
+set -x
+
+
+cd "$ROOT_DIR"
+
+
+pyinstaller s2p-extractor.spec
+git checkout build/.gitignore || true  # let fail
+git checkout dist/.gitignore  || true  # let fail
