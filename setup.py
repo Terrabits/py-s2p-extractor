@@ -21,7 +21,7 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version='1.0.0',
 
-    description='Rohde & Schwarz general purpose instrument control toolbox',
+    description='Characterize an otherwise unmeasurable RF component by performing two calibrations: one before and one after the component',
     long_description=open('README.md').read().strip(),
 
     # The project's main homepage.
@@ -60,11 +60,12 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8'
     ],
 
     # What does your project relate to?
-    keywords='RF test equipment automation ATE VISA SCPI VNA network spectrum analyzer signal generator oscilloscope',
+    keywords='Rohde R&S ATE VNA RF Test Equipment S-Parameters',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -74,15 +75,15 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['rohdeschwarz>=1.4.dev1<2.0', 'scikit-rf>=0.14.9<0.15'],
+    install_requires=['rohdeschwarz', 'scikit-rf'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'dev':  ['ddt>=1.2.1<2.0', 'pyinstaller'],
-        'test': ['ddt>=1.2.1<2.0']
+        'dev':  ['ddt', 'pyinstaller'],
+        'test': ['ddt']
     },
 
     # If there are data files included in your packages that need to be
