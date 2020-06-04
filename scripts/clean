@@ -23,3 +23,8 @@ git checkout build/.gitignore || true  # let fail
 rm -rf dist
 mkdir dist
 git checkout dist/.gitignore || true  # let fail
+
+
+# remove python artifacts
+find . -name __pycache__ -exec rm -rf {} +
+find . -name '*.pyc'     -exec rm -rf {} +
